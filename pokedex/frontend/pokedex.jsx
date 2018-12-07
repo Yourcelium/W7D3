@@ -1,15 +1,23 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
+import { HashRouter, Route, Switch } from "react-router-dom";
 
 import { fetchAllPokemon } from './util/api_util';
-import { RECEIVE_ALL_POKEMON, receiveAllPokemon, requestAllPokemon } from './actions/pokemon_actions'
+import { RECEIVE_ALL_POKEMON, receiveAllPokemon, requestAllPokemon, requestSinglePokemon } from './actions/pokemon_actions'
 import configureStore from './store/store'
+import PokemonIndexContainer from './components/pokemon/pokemon_index_container'
+import PokemonDetailContainer from './components/pokemon/pokemon_detail_container'
 
 
 const Root = ({ store }) => (
   <Provider store={store}>
-    <div>Dink Dink donk Dink donk donk donk</div>
+    < HashRouter>
+        <div className='container'>
+          < Route path="/" component={PokemonIndexContainer} />
+          < Route path="/pokemon/:id" component={PokemonDetailContainer} />
+        </div>
+    </HashRouter>
   </Provider>
 );
 
@@ -24,9 +32,11 @@ document.addEventListener('DOMContentLoaded', () => {
 //testing
 
 let store = configureStore()
+window.store = store
 window.fetchAllPokemon = fetchAllPokemon;
 window.RECEIVE_ALL_POKEMON = RECEIVE_ALL_POKEMON;
 window.receiveAllPokemon = receiveAllPokemon;
 window.requestAllPokemon = requestAllPokemon
 window.getState = store.getState; 
 window.dispatch = store.dispatch;
+window.requestSinglePokemon = requestSinglePokemon

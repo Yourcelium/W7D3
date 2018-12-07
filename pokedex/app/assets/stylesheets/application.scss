@@ -50,8 +50,11 @@
    ul {
      display: flex;
      justify-content: flex-end;
+     list-style: none;
 
      li {
+      list-style: none;
+      display: flex;
        a {
          background-color: white;
          border-radius: 4px;
@@ -103,3 +106,25 @@
    text-align: center;
    color: $black;
  }
+
+ .poke-list-item {
+   list-style: none;
+   height: auto;
+  
+   border: 2px solid black;
+   border-radius: 4px;
+   font-family: 'Shadows Into Light', cursive;
+   font-size: 20px;
+   
+ }
+ .poke-list-img {
+   width: 35px;
+   height: auto;
+ }
+
+
+.container{
+  display: flex;
+  align-content: space-between;
+  flex-direction: row;
+}
